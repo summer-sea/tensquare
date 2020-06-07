@@ -1,0 +1,23 @@
+server:
+  port: 9012
+spring:
+  application:
+    name: tensquare-web
+
+eureka:
+  client:
+    serviceUrl:  #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    tensquare-base:
+      path: /base/**
+      serverceId: tensquare-base
+    tensquare-user:
+      path: /user/**
+      serverceId: tensquare-user
+    tensquare-qa:
+      path: /qa/**
+      serverceId: tensquare-qa
